@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <title>Spesial Untukmu</title>
+    
+    <!-- Google tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9XNJ2QZ9P"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-C9XNJ2QZ9P'); </script>
+    
+    <!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    
+</head>
+<body>
+    
+    
+<div class="watermark">©2025Dham</div>
+
+
+    <!-- Halaman Password -->
+    <div class="password-container" id="password-container">
+        <div class="password">
+            <input type="password" class="password-input" placeholder="Masukkan Password">
+            <div class="toggle-eye">
+                <ion-icon name="eye-outline" class="eye-icon"></ion-icon>
+            </div>
+            <ion-icon name="lock-closed-outline" class="password-lock"></ion-icon>
+            <!-- Pesan error di dalam kotak password -->
+            <p class="error-message" id="error-message">Password salah</p>
+        </div>
+    </div>
+
+    <!-- Layar Transisi -->
+    <div id="transition-screen" class="transition-screen">
+        <div class="transition-text">Sebentar yaa, ini semua buat kamu...</div>
+    </div>
+
+    <!-- Halaman Sapaan -->
+<div class="sapaan-page" id="sapaan-page" style="display: none;">
+    <div class="polaroid-frame">
+        <div class="photo-area"></div>
+        <div class="nama-panggilan">Buat Kamuu</div>
+    </div>
+    <div class="sapaan-text" id="sapaan-text"></div>
+    <button id="start-flipbook-btn" class="next-btn">Lanjut</button>
+</div>
+
+<!-- Transisi ke Flipbook -->
+<div id="transisi-ke-flipbook" class="transisi-container" style="display: none;">
+  <div class="transisi-text" id="transisi-typing"></div>
+  <button id="mulai-flipbook-btn" class="fade-button" style="display: none;">Buka Halaman</button>
+  
+  <!-- Audio background -->
+  <audio id="bg-music" src="musik.mp3" preload="auto" loop></audio>
+</div>
+
+<!-- Overlay untuk efek fade-in (HARUS DI LUAR transisi-container) -->
+<div id="fade-overlay"></div>
+
+<!-- Halaman Selanjutnya (Flipbook) -->
+<div class="next-page" id="next-page" style="display: none;">
+    <div class="background-blur"></div>    
+
+    <div class="book-wrapper">
+        <div id="flipbook">
+            
+            <!-- Halaman 1 -->
+            <div class="page">
+                <img src="gambar1.png" alt="Gambar 1">
+                <div class="page-text">
+                <p>Cerita inii cuma sepotong kecil dari banyak yang aku simpen.</p>
+                <p>Dan aku bikin ini, karena kamuu ngga pernah aku anggep biasa.</p>
+                <p class="with-gap">Coba inget bareng aku yu.</p>
+                <p>Kita pernah ngelewatin banyak hal tauu, kadang kecil, kadang lucu, bahkan kadang ngga disangka sangka.</p>
+                <p>Tapi semuanya bikin aku makin yakin, kalau kamu itu beda.</p>
+                </div>
+                <div class="tap-hint1">
+  <p class="tap-text1">1.</p>
+</div>
+                <div class="tap-hint">
+  <p class="tap-text">Tap bebas buat lanjut</p>
+  <p class="extra-text">Jangan buru-buru ya, bacanya pelan-pelan aja hehee</p>
+</div>
+            </div>
+
+            <!-- Halaman 2 -->
+            <div class="page">
+                <img src="gambar2.png" alt="Gambar 2">
+                <div class="page-text">
+                    <p>Duluu kita cuma sekadar kenal. 
+Satu kelas, saling sapa, ngobrol seperlunya.</p>
+
+<p>Tapi dari situ, aku mulai ngerasa,</p>
+<p>kamu itu orang yang bikin nyaman, bahkan dari hal sederhana.</p>
+
+<p class="with-gap">Ngga tau kenapaa, tapi tiap kali ngobrol,
+rasanya gampang aja nyambung.
+</p>
+                </div>
+                <div class="tap-hint1">
+  <p class="tap-text1">2.</p>
+</div>
+                <div class="tap-hint">
+  <p class="tap-text">Tap bebas buat lanjut</p>
+  <p class="extra-text">(Geser dari pojok kirii buat balik)</p>
+</div>
+            </div>
+            <!-- Halaman 3 -->
+            <div class="page">
+                <img src="gambar3.png" alt="Gambar 3">
+                <div class="page-text">
+                    <p>Lama lamaa
+kamu mulai sering cerita ke aku.</p>
+
+<p class="whit-gap">Tentang hari kamuu, hal hal kecil,
+kadang juga tentang hal yang bikin kamu berat.</p>
+
+<p class="with-gap">Dan aku dengerin, bukan karena harus, tapi karena aku pengin. Karena itu kamu.</p>
+                </div>
+                <div class="tap-hint1">
+  <p class="tap-text1">3.</p>
+</div>
+                <div class="tap-hint">
+  <p class="tap-text">Tap bebas buat lanjut</p>
+  <p class="extra-text">(Geser dari pojok kirii buat balik)</p>
+</div>
+            </div>
+            <!-- Halaman 4 -->
+            <div class="page">
+                <img src="gambar4.png" alt="Gambar 4">
+                <div class="page-text">
+                    <p>Pernah kan kita ribet bareng ngerjain miniatur candi?</p>
+                    <p class="with-gap">Lemnya nempel di tangan, hasilnya ngga rapi rapi amat.</p>
+                    <p>Tapi justru itu yang bikin aku senyum tiap kali ngingetnya.</p>
+                    <p class="with-gap">Soalnyaa, bukan cuma soal hasil.</p>
+                    <p>Tapi karna kita ngerjain bareng bareng, sambil ketawa-ketawa sendiri itu yang bikin momen itu susah dilupain.</p>
+                </div>
+                <div class="tap-hint1">
+  <p class="tap-text1">4.</p>
+</div>
+                <div class="tap-hint">
+  <p class="tap-text">Tap bebas buat lanjut</p>
+  <p class="extra-text">(Geser dari pojok kirii buat balik)</p>
+</div>
+            </div>
+            <!-- Halaman 5 -->
+            <div class="page">
+                <img src="gambar5.png" alt="Gambar 5">
+                <div class="page-text">
+                    <p>Lalu suatu hari, kamu ngasih kado.</p>
+                    <p class="with-gap">Mungkin bagi orang lain ini cuma hal sederhana. Tapi buat aku,itu berharga banget.</p>
+                    <p class="with-gap">Karena bukan cuma soal apa yang kamu kasih, tapi perasaan yang kamu selipin di balik itu.</p>
+                </div>
+                <div class="tap-hint1">
+  <p class="tap-text1">5.</p>
+</div>
+                <div class="tap-hint">
+  <p class="tap-text">Tap bebas buat lanjut</p>
+  <p class="extra-text">(Geser dari pojok kirii buat balik)</p>
+</div>
+            </div>
+            
+            <!-- Halaman 6 -->
+            <div class="page">
+                <img src="gambar6.png" alt="Gambar 6">
+                <div class="page-text">
+                    <p>Dan yang paling sering video Tiktok random dari kamu.</p>
+                    <p>Kadang receh banget, kadang bikin mikir. Tapi selalu berhasil bikin aku senyum.</p>
+                    <p class="with-gap">Kadang kamu ngambek juga sii, entah karena aku yang ngga peka, atau aku yang mulai jail.</p>
+                    <p>Tapi lucunyaa, kita selalu balik lagi kaya biasa. Kaya ngga pernah ada apa apa.</p>
+                </div>
+                <div class="tap-hint1">
+  <p class="tap-text1">6.</p>
+</div>
+                <div class="tap-hint">
+  <p class="tap-text">Tap bebas buat lanjut</p>
+  <p class="extra-text">(Geser dari pojok kirii buat balik)</p>
+</div>
+            </div>
+            
+            <!-- Halaman 7 -->
+            <div class="page">
+                <img src="gambar7.png" alt="Gambar 7">
+                <div class="page-text">
+                    <p>Terus, kamu jadi sering cerita, ditambah jadi suka minta di ceritain balik, kaya:</p>
+                    <p class="with-gap">"Ceritain donggg"</p>
+                    <p class="with-gap">Padahal aku bingung, mau ceritain yang kaya gimanaa.</p>
+                    <p>Tapi aku sadar, kamu bukan pengen denger cerita seru.</p>
+                    <p>Kamu cuma pengen akuu
+mau cerita ke kamu.</p>
+                </div>
+                <div class="tap-hint1">
+  <p class="tap-text1">7.</p>
+</div>
+                <div class="tap-hint">
+  <p class="tap-text">Tap bebas buat lanjut</p>
+  <p class="extra-text">(Geser dari pojok kirii buat balik)</p>
+</div>
+            </div>
+            
+            <!-- Halaman 8 -->
+            <div class="page">
+                <img src="gambar8.png" alt="Gambar 8">
+                <div class="page-text">
+                    <p>Lalu, soal tugas.</p>
+                    <p>Kadang kamu nanya serius, kadang becanda.</p>
+                    <p>Kadang malah nyela nyela aku.</p>
+                    <p class="with-gap">Tapi, entah kenapa, aku selalu pengen bantu.</p>
+                    <p>Karena belajar bareng kamuu</p>
+<p>rasanya ngga sesulit itu.</p>
+                </div>
+                <div class="tap-hint1">
+  <p class="tap-text1">8.</p>
+</div>
+                <div class="tap-hint">
+  <p class="tap-text">Tap bebas buat lanjut</p>
+  <p class="extra-text">(Geser dari pojok kirii buat balik)</p>
+</div>
+            </div>
+            
+            <!-- Halaman 9 -->
+            <div class="page">
+                <img src="gambar.png" alt="Gambar 9">
+                <div class="page-text">
+                    <p>Mungkin ngga semua momen kita ada fotonya.</p>
+                    <p>Tapi banyak yang terekam jelas di aku.</p>
+                    <p>Aku simpen semua ini,</p>
+                    <p>karena kamu pernah (dan masih) jadi bagian yang penting.</p>
+                    <p class="with-gap">Dan semogaa...</p>
+<p>kamu bisa ngerasa hal yang sama.</p>
+                </div>
+                <div class="tap-hint1">
+  <p class="tap-text1">9.</p>
+</div>
+                <div class="tap-hint">
+  <p class="tap-text">Tap bebas buat lanjut</p>
+  <p class="extra-text1">~ihirr~</p>
+</div>
+            </div>
+            
+            <!-- Halaman 10 -->
+            <div class="page">
+                <img src="gambar10.png" alt="Gambar 10">
+                <div class="page-text">
+                    <p>Udah, ceritanya sampai sini dulu yaa...</p>
+                    <p>Makasih udah nemenin baca sampai titik ini.</p><p class="with-gap">Tapi tenang, ini belum akhir kok.</p>
+                    <p>
+                        Masih ada beberapa hal lagi yang pengin aku tunjukin.</p>
+                </div>
+                <div class="tap-hint2" onclick="slideOutFlipbook()">
+  <p class="tap-text7">Tekan disini buat lanjut</p>
+    </div>
+            </div>
+
+            <!-- Tambahkan halaman berikutnya di sini -->
+
+        </div>
+    </div>
+</div>
+
+<!-- Halaman Apresiasi -->
+<div class="apresiasi-page" id="apresiasi-page" style="display: none;">
+  <!-- Background blur jika diperlukan -->
+  <div class="background-blur"></div>
+  
+  <!-- Icon navigasi pojok kiri atas -->
+  <div id="harapan-icon" class="nav-icon" onclick="slideToHarapan()">
+    💐
+  </div>
+
+  <!-- Wrapper konten (untuk posisi stiker & teks lebih terkontrol) -->
+  <div class="content-wrapper">
+    <!-- Stiker dinamis -->
+    <img src="st1.gif" alt="Stiker Apresiasi" class="apresiasi-sticker show" id="apresiasi-sticker">
+
+    <!-- Teks animasi ketik -->
+    <div class="apresiasi-text" id="apresiasi-text"></div>
+  </div>
+
+  <!-- Tombol tap lanjut -->
+  <div class="tap-area-apresiasi" id="tap-area-apresiasi" style="display: none;" onclick="lanjutApresiasi()">
+    <p class="lanjut-text">Lanjut</p>
+  </div>
+
+  <!-- Daftar teks apresiasi (disembunyikan) -->
+  <div id="apresiasi-teks-list" style="display: none;">
+    
+    <!-- Grup 1 -->
+<div class="apresiasi-grup">
+  <div>Setelah semua cerita tadi, sekarang aku mau ngomong sesuatu.</div>
+  <div>Bukan karena ada momen khusus, bukan juga karena ada hal besar yang terjadi.</div>
+  <div>Aku cuma pengin jujur, tentang apa yang aku rasain selama ini.</div>
+</div>
+
+    <!-- Grup 2 -->
+<div class="apresiasi-grup">
+  <div>Terima kasih ya, Cencenn...</div>
+  <div>Aku tau, aku sering banget ngeselin. Kadang malah sengaja bikin kamu ngambek, karena ngga tau kenapa aku suka lihat kamu marah marah kecil gituu. Lucu, dan ngga tau kenapa, rasanya jadi deket banget.</div>
+  <div>Tapi di balik semua itu, aku juga selalu seneng tiap kamu ketawa lagi. Rasanya, berhasil bikin kamu senyum tu behh seneng banget pokoknya.</div>
+</div>
+
+    <!-- Grup 3 -->
+    <div class="apresiasi-grup">
+      <div>Maaf ya,</div>
+      <div>Kalau kadang sikap aku kelewat bates. Kalau aku ngomong tanpa mikir dulu, bikin kamu kesel, cape, atau ngerasa ngga dianggep.</div>
+      <div>Padahal kamu itu sabar banget. Dan aku tau jelas, kalau kadang semua itu ngga mudah buat kamu.</div>
+      <div>Bahkan di saat aku belum bisa berubah, kamu tetap ada, tetap nenangin, seolah olah cape dan kesel itu bukan alasan buat pergi.</div>
+      <div></div>
+    </div>
+
+    <!-- Grup 4 -->
+<div class="apresiasi-grup">
+  <div>Serius, walau aku kaya ngga peka gini, aku bangga banget sama kamu.</div>
+  <div>Cara kamu ngasih pendapat, cara kamu dengerin tanpa nge judge, bahkan cara kamu nyimak dan ketawa semuanya bener bener bikin nyaman.</div>
+  <div>Ketawa kamu tu ngga tau kenapa bisa ngilangin rasa capee. Pokoknya nyaman banget deh.</div>
+  <div>Dan dari semua itu aku juga belajar, belajar jadi orang yang lebih tenang, lebih sabar, lebih ngertiin.</div>
+</div>
+
+    <!-- Grup 5 -->
+    <div class="apresiasi-grup">
+      <div>Mata kamu, senyum kamu,</div>
+      <div>dan cara kamu bikin obrolan jadi hangat aku suka banget. Setiap ngobrol sama kamu tu ngga pernah kerasa sia sia.</div>
+      <div>Pasti adaa aja, hal tentang kamu yang selalu bisa bikin aku senyum.</div>
+      <div>Sering aku diem sebentar,terus mikir,</div>
+      <div>"Ahh ternyata ada ya orang yang kaya gini."</div>
+      <div>Terus setiap kaya gitu aku senyum sendiri, ya karna kamu yang bikin aku senyum.</div>
+    </div>
+
+    <!-- Grup 6 -->
+<div class="apresiasi-grup">
+  <div>Cencenn, kamu tau ngga?</div>
+  <div>Kamu tu selalu berhasil bikin aku kangen, bikin aku kepikiran, walau cuma beberapa saat ngga ngobrol.</div>
+  <div>Dan tiap kali itu terjadi, aku cuma bisa mikir:</div>
+  <div>"Cencenn lagi ngapain ya? Baik baik aja ngga?"</div>
+  <div>Terus aku kepikiran, "Kalau aku chat duluan ganggu ngga ya?" atau "Dia pengin ditemenin ngga ya sekarang?"</div>
+  <div>Padahal aku yang pengin, sama biar tau kabar kamu.</div>
+  <div>Aku aneh ya? hehee, orang kepikiran sendiri mulu masa salah.</div>
+</div>
+    
+    <!-- Grup 7 -->
+    <div class="apresiasi-grup">
+      <div>Mungkin sekarang kamu udah ngga seantusias dulu. Mungkin juga udah cape. Tapi aku tetep bersyukur, karena pernah kenal kamu sedeket ini.</div>
+      <div>Bahkan kalau suatu hari nanti kamu lupa semuanya, aku ngga bakal nyesel.
+      Karena aku pernah sebahagia itu,
+      karena seseorang sebaik kamu.</div>
+      <div>Dan jujur, aku takut kalau kita jadi asing. </div>
+    </div>
+
+    <!-- Grup 8 -->
+    <div class="apresiasi-grup">
+      <div>Makasih yaa...</div>
+      <div>Buat semua sabar, semua tawa, semua waktu, dan semua versi kamu yang pernah kamu bagi ke aku.</div>
+      <div>Maaf juga, kalau aku selalu ngga sesuai espektasi kamu.</div>
+      <div>Tapi yang pasti, aku ngga pernah anggap semua hal yang kamu kasih itu kecil.</div>
+    <div>Makasih Cencenn...</div>
+    </div>
+
+    <!-- Grup 9 -->
+    <div class="apresiasi-grup">
+      <div>Aku tau, selama ini aku banyak salah... dan kamu selalu jadi orang yang sabar banget. Mungkin sekarang semuanya ngga sama lagi kaya dulu, tapi aku tetep bersyukur banget pernah dekat sama kamu.</div>
+      <div>Aku cuma mau bilang, semoga kamu selalu bahagia dimana pun, kapan pun, sama siapa pun nantinya. Jangan lupa jaga diri ya, jangan terlalu keras sama diri sendiri jugaa. Aku tau kamu kuat, tapi kamu juga pantes bahagia tanpa harus nahan semuanya sendiri.</div>
+      <div>Kalau suatu saat kamu capee inget, kamu pernah jadi tempat ternyaman buat seseorang, dan itu bukan hal kecil.</div>
+      <div>Makasih udah jadi kamu.</div>
+      <div>Dan semoga kamu tau, kalau kamu pernah berarti banget.</div>
+    </div>
+    
+  </div>
+</div>
+
+
+<!-- TOMBOL MASUK HALAMAN VN (hanya jika ingin buat manual, tapi ini tidak dipakai saat ini) -->
+<button class="btn-masuk-vn" style="display: none;">Masuk ke Halaman VN</button>
+
+    <!-- Suara jika berhasil -->
+    <audio id="transition-sound" src="success.mp3" preload="auto"></audio> 
+   
+   
+   
+   <!-- Halaman VN -->
+<div class="vn-page" id="halaman-vn" style="display: none;">
+
+  <!-- VN 1 -->
+  <div class="vn-section vn1">
+      <div class="vn-content">
+    <div class="judul-vn">“Waktu Kamu Tiba-Tiba Muncul di Pikiran”
+</div>
+    <audio id="vn-audio" src="vn1.mp3" preload="auto" controls></audio>
+    <div class="teks-pendamping">
+      “Kadang aku ngga ngerti kenapa, tapi kamu tuh sering banget tiba tiba muncul di pikiran aku. Bahkan mungkin sekarang.”
+    </div>
+    
+    </div>
+    <div class="scroll-down-indicator">
+        <div class="scroll-text">Scroll PELAN buat lanjut</div>
+        <div class="arrow-down"></div>
+  
+</div>
+    
+  </div>
+
+  <!-- VN 2 -->
+  <div class="vn-section vn2">
+      <div class="vn-content">
+    <div class="judul-vn">“Waktu Tengah Malam, Aku Overthinking Lagi”
+</div>
+    <audio src="vn2.mp3" preload="auto" controls></audio>
+    <div class="teks-pendamping">
+      “Pernah ngerasa pengin jauh, tapi ngga pernah bisa buat bener bener njauh.”
+    </div>
+    </div>
+    <div class="scroll-down-indicator">
+        <div class="scroll-text">-</div>
+        <div class="arrow-down"></div>
+    </div>
+  </div>
+
+  <!-- VN 3 -->
+  <div class="vn-section vn3">
+      <div class="vn-content">
+    <div class="judul-vn">“VN paling jujur yang pernah aku buat”</div>
+    <audio src="vn3.mp3" preload="auto" controls></audio>
+    <div class="teks-pendamping">
+      “Aku tau mungkin aku bukan siapa siapa buat kamu. Tapi rasanya tetep keras banget. <br>
+Ngga peduli seberapa sering aku pengin pergi, dia tetep tinggal.”
+    </div>
+    </div>
+    <div class="scroll-down-indicator">
+        <div class="scroll-text">- -</div>
+        <div class="arrow-down"></div>
+    </div>
+  </div>
+
+  <!-- VN 4 -->
+  <div class="vn-section vn4">
+      <div class="vn-content">
+    <div class="judul-vn">“Kalau Kamu Lagi Capee, Dengerin Ini Ya”</div>
+    <audio src="vn4.mp3" preload="auto" controls></audio>
+    <div class="teks-pendamping">
+      “Kadang kita cuma butuh satu suara buat ngerasa tenang. <br>
+Semoga ini bisa jadi salah satunya.”
+    </div>
+    </div>
+    <div class="scroll-down-indicator">
+        <div class="scroll-text">- - -</div>
+        <div class="arrow-down"></div>
+    </div>
+  </div>
+
+  <!-- VN 5 -->
+  <div class="vn-section vn5">
+      <div class="vn-content">
+    <div class="judul-vn">“Cerita Biasa yang Selalu Bikin Kangen”</div>
+    <audio src="vn5.mp3" preload="auto" controls></audio>
+    <div class="teks-pendamping">
+      “Kamu mungkin cuma lagi cerita atau ngomong biasa. Tapi buatku, suara kamu di saat kaya gitu selalu punya cara sendiri buat nenangin. <br> 
+      Aku suka banget suara kamu.” 
+    </div>        
+  </div>
+  
+  <!-- TOMBOL KIRIM PESAN (Awalnya disembunyikan) -->
+<a href="https://wa.me/6285600713926" class="wa-button" style="display: none;">Kirim Pesan</a>
+  
+</div>
+   
+   
+
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="turn.min.js"></script>
+    <script src="index.js"></script>
+    
+</body>
+</html>
